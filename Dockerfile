@@ -58,3 +58,6 @@ RUN curl --silent --location https://rpm.nodesource.com/setup_8.x | bash - \
 
 # Serverless install
 RUN npm install -g serverless && npm install serverless-apigw-binary
+
+# Clone
+RUN curl -SLO https://raw.githubusercontent.com/MBalazs90/landsat/master/serverless.yml
