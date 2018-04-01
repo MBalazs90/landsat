@@ -47,7 +47,14 @@ RUN du -sh /tmp/vendored
 COPY app /tmp/vendored/app
 
 # Create archive
-RUN cd /tmp/vendored && zip -r9q /tmp/package.zip *
+RUN cd /tmp/vendored && zip -r9q /root/package.zip *
 
 # Cleanup
 RUN rm -rf /tmp/vendored/
+
+# Node install
+RUN curl --silent --location https://rpm.nodesource.com/setup_8.x | bash - \
+        && yum -y install nodejs
+
+# Serverless install
+RUN npm install -g serverless && npm install serverless-apigw-binary
